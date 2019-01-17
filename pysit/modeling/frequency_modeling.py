@@ -314,7 +314,7 @@ class FrequencyModeling(object):
             dWaveOp = dict()
 
         if len(prep_rp) > 0:
-            retval = self.forward_model_list(shots_list, m0, frequencies, return_parameters=prep_rp)
+            retval = self.forward_model_list(shots_list, m0, frequencies, return_parameters=prep_rp,**kwargs)
             if 'dWaveOp' in prep_rp:
                 dWaveOp = retval['dWaveOp']
 
@@ -329,7 +329,7 @@ class FrequencyModeling(object):
         # If the adjoint field is desired as output.
         for nu in frequencies:
             if adjointfield is not None:
-                adjointfield[nu] = rv['adjointfield'][nu]
+                adjointfield[nu] = rv['adjointfield'][0][nu]
             if dWaveOpAdj is not None:
                 dWaveOpAdj[nu] = rv['dWaveOpAdj'][nu]
 
