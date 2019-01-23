@@ -57,7 +57,7 @@ class PetscWrapper():
         pc = ksp.getPC()
         pc.setType('lu') # setting the preconditioner to use an LU factorization
 
-        pc.setFactorSolverType(self.solverType) # using mumps as a sparse algorithm
+        pc.setFactorSolverPackage(self.solverType) # using mumps as a sparse algorithm
 
         # setting the solvers from the options
         pc.setFromOptions()
